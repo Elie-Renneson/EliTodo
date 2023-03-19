@@ -7,3 +7,11 @@ CREATE TABLE events (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL
 );
+
+
+CREATE TABLE tickets (
+  id INT(11) AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  closed BOOLEAN NOT NULL DEFAULT false
+);

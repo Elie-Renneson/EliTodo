@@ -64,8 +64,9 @@ class Database {
         $sql = "UPDATE $table SET $set WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':id', $id);
-        $stmt->execute($data);
+        $stmt->execute(array_merge(['id' => $id], $data));
     }
+    
     
     public function delete($table, $id) {
         $sql = "DELETE FROM $table WHERE id = :id";

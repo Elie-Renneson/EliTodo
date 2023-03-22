@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Compteur de Licornes</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+
+		h1 {
+			color: #FF69B4;
+		}
+
+		#licorne-count {
+			font-size: 48px;
+			color: #FF69B4;
+			margin: 50px 0;
+		}
+
+		button {
+			background-color: #FF69B4;
+			color: #FFF;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 24px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		button:hover {
+			background-color: #FFB6C1;
+		}
+	</style>
+</head>
+<body>
+	<h1>Compteur de Licornes</h1>
+	<div id="licorne-count">0</div>
+	<button onclick="incrementer()">Ajouter une Licorne</button>
+
+	<script>
+		// Get the current count from localStorage or default to 0
+		var compteur = localStorage.getItem('compteur') || 0;
+		document.getElementById('licorne-count').innerHTML = compteur;
+
+		function incrementer() {
+			compteur++;
+			document.getElementById("licorne-count").innerHTML = compteur;
+
+			// Store the updated count in localStorage
+			localStorage.setItem('compteur', compteur);
+		}
+	</script>
+</body>
+</html>

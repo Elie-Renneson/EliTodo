@@ -1,6 +1,6 @@
-CREATE DATABASE elietodo;
+CREATE DATABASE elitodo;
 
-USE elietodo;
+USE elitodo;
 CREATE TABLE events (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,

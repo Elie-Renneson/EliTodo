@@ -15,3 +15,10 @@ CREATE TABLE tickets (
   description TEXT NOT NULL,
   closed BOOLEAN NOT NULL DEFAULT false
 );
+
+CREATE TABLE melee (
+  id INT(11) AUTO_INCREMENT PRIMARY KEY,
+  login VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  closed BOOLEAN NOT NULL DEFAULT false
+);

@@ -3,7 +3,7 @@ require_once '../core/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // Get form data
-  $title = $_POST['title'];
+  $title = $_POST['login'];
   $description = $_POST['description'];
 
   // Insert new ticket into database

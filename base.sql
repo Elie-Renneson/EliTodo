@@ -22,3 +22,24 @@ CREATE TABLE melee (
   description TEXT NOT NULL,
   closed BOOLEAN NOT NULL DEFAULT false
 );
+
+
+CREATE TABLE promotions (
+  id INT(11) AUTO_INCREMENT PRIMARY KEY,
+  year INT(4) NOT NULL,
+  title VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE students (
+  id INT(11) AUTO_INCREMENT PRIMARY KEY,
+  login VARCHAR(255) NOT NULL,
+  promotion_id INT(11) NOT NULL,
+  FOREIGN KEY (promotion_id) REFERENCES promotions(id)
+);
+
+
+ALTER TABLE `melee` ADD `last_melee` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+ALTER TABLE `promotions` ADD `id_promo` INT NOT NULL DEFAULT '-1' AFTER `title`;
+ALTER TABLE `students` ADD `student_id` INT NOT NULL DEFAULT '-1' AFTER `promotion_id`;
+
+

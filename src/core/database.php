@@ -80,4 +80,10 @@ class Database {
         return $stmt;
     }
     
+    function student_exists($db, $login) {
+        $check = $db->query("SELECT COUNT(*) FROM students WHERE login = '$login'")->fetchColumn();
+        return $check > 0;
+    }
+    
+
 }

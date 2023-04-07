@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="style/suivi_promo.css?id=347">
+
+<?php
+ include 'src/core/database.php';
+ $db = new Database();
+ $promotions = $db->query("SELECT * FROM promotions")->fetchAll();
+?>
+
+<h1>Suivi par promotions</h1>
+
+<!-- suivi_promo.phtml -->
+<div class="suivi-promo">
+  <div class="forms">
+    <div class="add-promotion">
+      <h3>Add Promotion</h3>
+      <form action="src/function/add_promotion.php" method="POST">
+        <label for="year">Year:</label>
+        <input type="number" name="year" id="year" required>
+
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" required>
+
+        <input type="submit" value="Add Promotion">
+      </form>
+    </div>
+
+    <div class="add-student">
+      <h3>Add Student</h3>
+      <form action="src/function/add_student.php" method="POST">
+        <label for="login">Login:</label>
+        <input type="text" name="login" id="login" required>
+
+        <label for="promotion_id">Promotion:</label>
+        <select name="promotion_id" id="promotion_id" required>
+        <?php foreach ($promotions as $promotion): ?>
+        <option value="<?php echo $promotion['id']; ?>">
+          <?php echo $promotion['year'] . ' - ' . $promotion['title']; ?>
+        </option>
+      <?php endforeach; ?>
+        </select>
+
+        <input type="submit" value="Add Student">
+      </form>
+    </div>
+  </div>
+
+  <div class="add-multiple-students">
+  <h3>Add Multiple Students</h3>
+  <form action="src/function/add_multiple_students.php" method="POST">
+    <label for="logins">Logins (separated by ';'):</label>
+    <textarea name="logins" id="logins" required></textarea>
+
+    <label for="promotion_id_multiple">Promotion:</label>
+    <select name="promotion_id" id="promotion_id_multiple" required>
+    <?php foreach ($promotions as $promotion): ?>
+      <option value="<?php echo $promotion['id']; ?>">
+        <?php echo $promotion['year'] . ' - ' . $promotion['title']; ?>
+      </option>
+    <?php endforeach; ?>
+    </select>
+
+    <input type="submit" value="Add Multiple Students">
+  </form>
+</div>
+
+
+</div>
+
+
+
+<div class="suivi-promo">
+  <h2>Suivi Promos</h2>
+
+  <div class="promotions-menu" style="overflow-x: scroll; white-space: nowrap;">
+    <?php foreach ($promotions as $promotion): ?>
+      <button class="promo-btn" data-promo-id="<?php echo $promotion['id']; ?>"><?php echo $promotion['year'] . ' - ' . $promotion['title']; ?></button>
+    <?php endforeach; ?>
+  </div>
+
+  <div class="students-container" style="margin-top: 20px;">
+    <!-- Students will be displayed here -->
+  </div>
+
+  <!-- The rest of the code remains the same -->
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const promoButtons = document.querySelectorAll('.promo-btn');
+  const studentsContainer = document.querySelector('.students-container');
+
+  promoButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      const promoId = this.getAttribute('data-promo-id');
+
+      // Fetch students using AJAX
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'src/function/get_students.php?promotion_id=' + promoId, true);
+      xhr.onload = function() {
+        if (this.status === 200) {
+          studentsContainer.innerHTML = this.responseText;
+        }
+      };
+      xhr.send();
+    });
+  });
+});
+</script>

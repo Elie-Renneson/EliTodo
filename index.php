@@ -25,6 +25,7 @@ require_once 'src/core/index_core.php';
                 <li><a href="index.php?pages=calendar">Calendar</a></li>
                 <li><a href="index.php?pages=ticket_wall">Ticket Wall</a></li>
                 <li><a href="index.php?pages=melee">Melee</a></li>
+                <li><a href="index.php?pages=suivi_promo">Suivi Promos</a></li>
                 <li><a href="index.php?pages=compteur_de_licornes">Compteur de licornes</a></li>
                 
             </ul>

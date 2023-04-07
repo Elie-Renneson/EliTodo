@@ -5,10 +5,10 @@
   <link rel="stylesheet" type="text/css" href="style/ticket.css">
 </head>
 <body>
-  <h1>Ticket List</h1>
+  <h1>Melee List</h1>
 
-  <!-- Form to add new ticket -->
-  <h2>Add New Ticket</h2>
+  <!-- Form to add new melee -->
+  <h2>Add New Melee</h2>
   <form method="post" action="src/function/add_melee.php">
     <label>Login:</label>
     <input type="text" name="login" required>
@@ -17,8 +17,8 @@
     <button type="submit">Add Melee</button>
   </form>
 
-  <!-- List of open tickets -->
-  <h2>Open Tickets</h2>
+  <!-- List of open melee -->
+  <h2>Open Melees</h2>
   <ul>
   <?php
   require_once('src/core/database.php');

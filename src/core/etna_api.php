@@ -41,7 +41,7 @@ class Etna_Api {
       //https://melee-api.etna-alternance.net/conversations/1768402/messages
       public function get_student_conversations($student_id, $term_id) {
         $url = "https://melee-api.etna-alternance.net/student/{$student_id}/conversations/school?term_id={$term_id}";
-        echo $url . "<br>";
+        //echo $url . "<br>";
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
